@@ -1,10 +1,9 @@
-FROM python:3.9
+FROM python:3.11
 
 LABEL maintainer="Montro"
 
 VOLUME /data
 
-# base OS packages
 RUN  \
     apt-get update && \
     apt-get -y upgrade && \
@@ -17,6 +16,7 @@ RUN  \
         libgraphicsmagick++3 \
         libgraphicsmagick++1-dev \
         libgraphicsmagick-q16-3 \
+        libmagickwand-dev \
         zlib1g-dev \
         libboost-python-dev \
         libmemcached-dev \
@@ -29,15 +29,13 @@ ENV SHELL bash
 ENV WORKON_HOME /app
 WORKDIR /app
 
-RUN pip install thumbor==7.5.2
+RUN pip install thumbor==7.7.4
 COPY requirements.txt /app/requirements.txt
 RUN pip install --trusted-host None --no-cache-dir -r /app/requirements.txt
-RUN pip install --no-dependencies tc-aws==6.2.15
-RUN pip install --no-dependencies tc-core==0.4.1
-RUN pip install --no-dependencies tc-shortener==0.2.2
+RUN pip install --no-dependencies tc-core==0.5
 
 RUN pip install thumbor_request_modifier==2.0.4
-RUN pip install tc_redis==2.3.0
+RUN pip install tc_redis==2.5.0
 RUN pip install tc_prometheus==2.0.0
 
 COPY conf/thumbor.conf.tpl /app/thumbor.conf.tpl

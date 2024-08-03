@@ -1,11 +1,8 @@
 envtpl==0.7.2
-remotecv==5.1.5
-boto==2.49.0
-tornado-botocore==1.5.0
+remotecv==5.1.8
 python-dateutil
 dateutils==0.6.12
-shortuuid==1.0.8
-redis==4.6.0
-raven==6.10.0
-cairosvg==2.7.0
-pycurl==7.45.2
+shortuuid==1.0.13
+redis==5.0.8
+cairosvg==2.7.1
+pycurl==7.45.3
