@@ -11,6 +11,7 @@ RUN  \
     apt-get install -y -q \
         git \
         curl \
+        ca-certificates \
         libjpeg-turbo-progs \
         graphicsmagick \
         libgraphicsmagick++3 \
@@ -22,7 +23,8 @@ RUN  \
         libmemcached-dev \
         gifsicle \
         ffmpeg && \
-    apt-get clean
+    apt-get clean && \
+    update-ca-certificates
 
 ENV HOME /app
 ENV SHELL bash
